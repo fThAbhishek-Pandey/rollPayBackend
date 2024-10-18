@@ -46,5 +46,5 @@ const RecieptSchema = new mongoose.Schema({
     }
 
 })
-const reciept = mongoose.model('reciept',RecieptSchema )
+const reciept = mongoose.models.reciept|| mongoose.model('reciept',RecieptSchema )
 export default reciept

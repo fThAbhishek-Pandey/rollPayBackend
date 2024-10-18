@@ -2,7 +2,13 @@ import mongoose from "mongoose";
 const EmployeeSchema = new mongoose.Schema({
     emp_id:{
         type :String,
-        required:true
+        required:true,
+        unique:true
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true
     },
     design:{
         type:String,
@@ -25,5 +31,5 @@ const EmployeeSchema = new mongoose.Schema({
         required:true
     }
 })
-const employee = mongoose.model('employee',EmployeeSchema)
+const employee = mongoose.models.employee||mongoose.model('employee',EmployeeSchema)
 export default employee;
