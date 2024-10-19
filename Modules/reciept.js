@@ -38,7 +38,7 @@ const RecieptSchema = new mongoose.Schema({
     },
     isCancel:{
         type:Boolean,
-        default:type
+        default:false
     },
     mailed:{
         type:Boolean,
@@ -46,5 +46,5 @@ const RecieptSchema = new mongoose.Schema({
     }
 
 })
-const reciept = mongoose.models.reciept|| mongoose.model('reciept',RecieptSchema )
-export default reciept
+const recieptModel = mongoose.models.reciept|| mongoose.model('reciept',RecieptSchema )
+export default recieptModel
