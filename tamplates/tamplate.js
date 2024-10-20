@@ -1,6 +1,8 @@
 
-const htmlTemplates =()=>{
+const htmlTemplates = (salary_Data)=>{
+    console.log("02",salary_Data);
     return `
+
     <!DOCTYPE html>
 <html lang="en">
 <head>
