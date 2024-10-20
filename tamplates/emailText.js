@@ -1,8 +1,6 @@
-
-const htmlTemplates = (salary_Data)=>{
-    console.log("02",salary_Data);
-    return `
-   <!DOCTYPE html>
+const emailText = ()=>{
+    
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +18,7 @@ const htmlTemplates = (salary_Data)=>{
 </head>
 
 <body>
-    <h2 class="headline">Salary slip  for the month of August-2024</h2>
+    <h2 class="headline">Salary slip  for the month By Abhishek</h2>
     <div class="header">
         <div>
             <p class="">Employ ID: <span>RO2317MC</span></p>
@@ -36,7 +34,6 @@ const htmlTemplates = (salary_Data)=>{
     
 
 </body>
-</html>
-    `
+</html>`
 }
-export default htmlTemplates
+export default  emailText
