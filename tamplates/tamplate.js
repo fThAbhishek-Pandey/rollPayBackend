@@ -1,6 +1,9 @@
 
 const htmlTemplates = (salary_Data)=>{
     console.log("02",salary_Data);
+    const {
+        employee_id, pay, DA,DA_rupee, npda, HRA,dec_depart, ele_ch, nps_per, nps_rupee,total,payment,
+        email,month, design, name,  depart,  doj, dob}= salary_Data;
     return `
 
     <!DOCTYPE html>
@@ -55,21 +58,21 @@ const htmlTemplates = (salary_Data)=>{
     <h1>Salary Slip for the month of August - 2024</h1>
     <div class="employe_box">
         <div class="left_box">
-            <h4>Employee ID : RO2317MC</h4>
-            <h4>Emloyee Name : Prince Rajput</h4>
-            <h4>D.O.B. : 20/07/1990</h4>
+            <h4>Employee ID : ${employee_id}</h4>
+            <h4>Emloyee Name : ${name}</h4>
+            <h4>D.O.B. : ${dob}</h4>
         </div>
         <div class="right_box">
-            <h4>Designation : Assistant Professor</h4>
-            <h4>Department : Information Technology</h4>
-            <h4>D.O.J. : 11/12/2017</h4>
+            <h4>Designation :${design}</h4>
+            <h4>Department : ${depart}</h4>
+            <h4>D.O.J. : ${doj}</h4>
         </div>
     </div>
     <div class="table">
         <table>
             <tr>
-                <th rowspan="2">Pay</th>
-                <th rowspan="2">D.A. 50%</th>
+                <th rowspan="2">Basic Pay</th>
+                <th rowspan="2">D.A. ${DA}</th>
                 <th>Sum</th>
                 <th rowspan="2">HRA</th>
                 <th rowspan="2">Total</th>
@@ -78,20 +81,20 @@ const htmlTemplates = (salary_Data)=>{
             </tr>
             <tr>
                 <th>N.P. + D.A.</th>
-                <th>I.T.</th>
+                <th>${ depart}</th>
                 <th>Elect. Charge</th>
-                <th>NPS 10%</th>
+                <th>NPS ${nps_per}</th>
             </tr>
             <tr>
-                <td>75,200</td>
-                <td>37,600</td>
-                <td>112,800</td>
-                <td>0</td>
-                <td>112,800</td>
-                <td>10,000</td>
-                <td>1,153</td>
-                <td>11,280</td>
-                <td>90,367</td>
+                <td>${pay}</td>
+                <td>${DA_rupee}</td>
+                <td>${npda}</td>
+                <td>${HRA}</td>
+                <td>${total}</td>
+                <td>${dec_depart}</td>
+                <td>${ele_ch}</td>
+                <td>${nps_rupee}</td>
+                <td>${payment}</td>
             </tr>
         </table>
     </div>
