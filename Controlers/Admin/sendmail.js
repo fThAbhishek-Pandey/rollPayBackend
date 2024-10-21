@@ -5,12 +5,13 @@ import emailText from "../../tamplates/emailText.js"
 const sendMail = async(req,res)=>{
            const {recipt_Id} = req.body
            const salary_data =  salaryData(recipt_Id);
-           const {email: dest_email} = salary_data;
+           const {email} = salary_data;
            const emailContent = emailText(salary_data)
            const pdfContent = htmlTemplates(salary_data)
+           console.log("email : ", email)
   //  sending email 
     try {
-        MailService.sampleMail( pdfContent,emailContent, dest_email)
+        MailService.sampleMail( pdfContent,emailContent, email)
         .then( () => {
           return res.status( 200 ).type('json').json({success:true, message: 'Email sent successfully'} )
         })
