@@ -4,12 +4,11 @@ import salaryData from "./sararyData.js"
 import emailText from "../../tamplates/emailText.js"
 const sendMail = async(req,res)=>{
            const {recipt_Id} = req.body
-           const salary_data =  salaryData(recipt_Id);
+           const salary_data = await salaryData(recipt_Id);
            const {email} = salary_data;
            const emailContent = emailText(salary_data)
            const pdfContent = htmlTemplates(salary_data)
            console.log("email : ", email)
-  //  sending email 
     try {
         MailService.sampleMail( pdfContent,emailContent, email)
         .then( () => {

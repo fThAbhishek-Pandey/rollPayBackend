@@ -12,6 +12,10 @@ const RecieptSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
+    month:{
+        type:String,
+        required:true
+    },
     HRA:{
         type:Number,
         required:true,
