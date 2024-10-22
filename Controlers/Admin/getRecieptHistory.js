@@ -1,4 +1,4 @@
-import recieptModel from '../../Modules/employeeModule.js'
+import recieptModel from '../../Modules/reciept.js'
 
 const reciptHistory = async(req,res)=>{
        try {
