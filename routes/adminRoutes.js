@@ -10,5 +10,5 @@ AdminRouter.post('/login', Login);
 AdminRouter.post('/test', authAdmin,test)
 AdminRouter.post('/add-doctor', [authAdmin],addEmploy);
 AdminRouter.get('/reciept-history', [authAdmin],reciptHistory);
-AdminRouter.post('/testmail', [authAdmin], sendMail);
+AdminRouter.post('/mail', [authAdmin], sendMail);
 export default AdminRouter;
