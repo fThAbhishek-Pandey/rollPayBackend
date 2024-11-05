@@ -17,8 +17,14 @@ let emailConfig = {
   {
     static async sampleMail(pdfContent,emailContent,dest_email){
       // creating mail 
-      console.log("pdfContent : ",pdfContent,"emailContent : ",emailContent, "dest_email",dest_email  )
-      const browser = await puppeteer.launch();
+      // console.log("pdfContent : ",pdfContent,"emailContent : ",emailContent, "dest_email",dest_email  )
+      const browser = await puppeteer.launch({
+        headless: true, // Ensures Puppeteer runs in headless mode on the server
+        args: [
+          '--no-sandbox', // Disables Chrome's sandboxing
+          '--disable-setuid-sandbox', // Additional flag for compatibility
+        ],
+      });
     const page = await browser.newPage();
     const template = pdfContent;
     await page.setContent(template, {waitUntil: 'domcontentloaded'})
@@ -28,7 +34,7 @@ let emailConfig = {
     });
     await browser.close()
       // create the object for nodemailer 
-      console.log("sample sender : ")
+      // console.log("sample sender : ")
       let message = {
         from: sender, 
         to:dest_email,
