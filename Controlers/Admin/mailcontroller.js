@@ -24,6 +24,7 @@ let emailConfig = {
           '--no-sandbox', // Disables Chrome's sandboxing
           '--disable-setuid-sandbox', // Additional flag for compatibility
         ],
+         executablePath: '/opt/render/.cache/puppeteer/chrome-linux/chrome'
       });
     const page = await browser.newPage();
     const template = pdfContent;
