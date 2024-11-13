@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer'
-import puppeteer from 'puppeteer';
+import generatePDF from './generatepdf.js';
 let emailConfig = {
     host: 'smtp.gmail.com', // SMTP provider in my case is Gmail
     port: 587, // the port that your SMTP provider ask for
@@ -18,22 +18,9 @@ let emailConfig = {
     static async sampleMail(pdfContent,emailContent,dest_email){
       // creating mail 
       // console.log("pdfContent : ",pdfContent,"emailContent : ",emailContent, "dest_email",dest_email  )
-      const browser = await puppeteer.launch({
-        headless: true, // Ensures Puppeteer runs in headless mode on the server
-        args: [
-          '--no-sandbox', // Disables Chrome's sandboxing
-          '--disable-setuid-sandbox', // Additional flag for compatibility
-        ],
-         executablePath: await puppeteer.executablePath() 
-      });
-    const page = await browser.newPage();
-    const template = pdfContent;
-    await page.setContent(template, {waitUntil: 'domcontentloaded'})
-    const pdfBuffer = await page.pdf({
-      format: 'A4',
-      printBackground: true,
-    });
-    await browser.close()
+      
+    const pdfBuffer = generatePDF(pdfContent);
+    
       // create the object for nodemailer 
       // console.log("sample sender : ")
       let message = {
@@ -42,12 +29,12 @@ let emailConfig = {
         subject: 'salay slip',
         text: 'Body of the mail.',
         html:emailContent,
-        attachments: [
-          {
-              content :pdfBuffer,
-              filename: 'salary.pdf', 
-              contentType: 'application/pdf'
-          }],
+        // attachments: [
+        //   {
+        //       content :pdfBuffer,
+        //       filename: 'salary.pdf', 
+        //       contentType: 'application/pdf'
+        //   }],
         envelope: {
             from: `aapk@ Abhishek<${sender}>`,
             to: `${dest_email}, <${dest_email}>`
