@@ -2,14 +2,13 @@ import puppeteer from 'puppeteer';
 
 async function generatePDF(htmlTemplate) {
   const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/google-chrome-stable'
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
   const page = await browser.newPage();
   await page.setContent(htmlTemplate, { waitUntil: 'networkidle0' });
-  const pdf = await page.pdf({ path: 'output.pdf', format: 'A4' }); // Save to check locally
+  const pdf = await page.pdf({ format: 'A4' }); // Save to check locally
 
   await browser.close();
 
